@@ -1,0 +1,33 @@
+.nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 20px;
+	background: #f8f9fa; /* Color de fondo claro */
+	border-bottom: 2px solid #ddd; /* Línea inferior */
+}
+
+.nav-logo {
+	height: 40px; /* Tamaño del logo */
+	width: 40px;
+	border-radius: 50%; /* Bordes redondeados */
+	object-fit: cover; /* Evita deformación */
+	margin-right: 15px; /* Espacio entre logo y lista */
+}
+
+.nav-list {
+	list-style: none;
+	display: flex;
+	gap: 15px;
+}
+
+.nav-item a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	transition: color 0.3s;
+}
+
+.nav-item a:hover {
+	color: #007bff;
+}
