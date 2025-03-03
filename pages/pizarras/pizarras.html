@@ -4,11 +4,12 @@
 <head>
     <link rel="icon" type="image/png" href="../../assets/icono.png">
 
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizarras - Mochi Jira</title>
     <link rel="stylesheet" href="../../global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <link rel="stylesheet" href="pizarras.css">
 </head>
 
@@ -19,11 +20,41 @@
             <li class="nav-item"><a href="../pizarras/pizarras.html" class="active">Pizarras</a></li>
             <li class="nav-item"><a href="../tarjetas/tarjetas.html">Tarjetas</a></li>
         </ul>
-    </nav>
 
-    <h1>Pizarras</h1>
+    </nav>
+    <!-- Contenedor de la pizarra -->
+    <div class="pizarra-container">
+        <div class="pizarra">
+            <div class="empty-message">
+                <i class="fa-solid fa-ban"></i>
+                <p>No existen pizarras</p>
+            </div>
+        </div>
+        <!-- Botón ÚNICO para abrir el modal -->
+        <button class="crear-tarea" id="crear-pizarra">Crear Pizarra</button>
+    </div>
+
+    <!-- Modal para Crear Pizarra -->
+    <div id="pizarra-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <h2>Crear Nueva Pizarra</h2>
+            <label for="pizarra-name">Nombre</label>
+            <input type="text" id="pizarra-name" placeholder="Nombre">
+            <label for="pizarra-desc">Descripción</label>
+            <textarea id="pizarra-desc" placeholder="Descripción"></textarea>
+            <div class="modal-buttons">
+                <button class="crear-btn">Crear</button>
+                <button class="cancelar-btn">Cancelar</button>
+            </div>
+
+        </div>
+    </div>
+
     <script type="module" src="../../store/store.js"></script>
     <script type="module" src="pizarras.js"></script>
+
 </body>
 
 </html>
