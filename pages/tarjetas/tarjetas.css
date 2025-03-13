@@ -1,0 +1,280 @@
+/* 🔹 Estilos Generales */
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 0;
+}
+
+/* 🔹 Contenedor Principal */
+.tarjetas-container {
+	width: 90%;
+	max-width: 1200px;
+	margin: 20px auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+/* 🔹 Mensaje cuando no hay tarjetas */
+.empty-message {
+	text-align: center;
+	font-size: 18px;
+	color: #666;
+	margin-top: 20px;
+}
+
+/* 🔹 Tarjeta */
+.tarjeta-item {
+	background: white;
+	border-radius: 10px;
+	padding: 15px;
+	margin: 10px;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+	width: 300px;
+	text-align: center;
+	position: relative;
+	transition: transform 0.3s ease;
+}
+
+.tarjeta-item:hover {
+	transform: scale(1.03);
+}
+
+/* 🔹 Títulos y descripciones */
+.tarjeta-item h3 {
+	margin: 0;
+	color: #333;
+	font-size: 20px;
+}
+
+.tarjeta-item p {
+	margin: 10px 0;
+	color: #666;
+}
+
+/* 🔹 Prioridad (Colores Diferenciados) */
+.prioridad-alta {
+	background-color: #dc3545;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.prioridad-media {
+	background-color: #ffc107;
+	color: black;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.prioridad-baja {
+	background-color: #28a745;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+/* 🔹 Botones */
+.edit-btn,
+.delete-btn {
+	background: #007bff;
+	color: white;
+	border: none;
+	padding: 8px 12px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background 0.3s;
+	margin: 5px;
+}
+
+.delete-btn {
+	background: #dc3545;
+}
+
+.edit-btn:hover {
+	background: #0056b3;
+}
+
+.delete-btn:hover {
+	background: #a71d2a;
+}
+
+/* 🔹 Botón Crear Tarjeta */
+.crear-tarjeta {
+	display: block;
+	margin: 20px auto;
+	padding: 12px 20px;
+	background: #007bff;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+.crear-tarjeta:hover {
+	background: #0056b3;
+}
+
+/* 🔹 Estilo del Modal */
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	backdrop-filter: blur(3px);
+}
+
+/* 🔹 Contenido del Modal */
+.modal-content {
+	background: #ededed;
+	padding: 40px;
+	border-radius: 10px;
+	text-align: center;
+	width: 500px;
+	max-width: 90%;
+	position: relative;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+/* 🔹 Inputs y Selects */
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	border: 2px solid #ccc;
+	border-radius: 8px;
+	background-color: #f8f8f8;
+	transition: all 0.3s ease-in-out;
+	outline: none;
+	margin-bottom: 10px;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus,
+.modal-content select:focus {
+	border-color: #007bff;
+	background-color: #fff;
+	box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* 🔹 Botones del Modal */
+.modal-buttons {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: 15px;
+}
+
+.modal-buttons .crear-btn {
+	background-color: #007bff;
+	color: white;
+	padding: 10px 15px;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: background 0.3s ease, transform 0.2s;
+	font-weight: bold;
+	flex: 1;
+}
+
+.modal-buttons .crear-btn:hover {
+	background-color: #0056b3;
+	transform: scale(1.05);
+}
+
+.modal-buttons .cancelar-btn {
+	background-color: #dc3545;
+	color: white;
+	padding: 10px 15px;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: background 0.3s ease, transform 0.2s;
+	font-weight: bold;
+	flex: 1;
+}
+
+.modal-buttons .cancelar-btn:hover {
+	background-color: #a71d2a;
+	transform: scale(1.05);
+}
+
+/* 🔹 Cerrar Modal */
+.close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+/* 🔹 🔍 Sección de Filtrado */
+.filtro-container {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	justify-content: center;
+	background: #f8f9fa;
+	padding: 15px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+	margin: 20px auto;
+	max-width: 600px;
+}
+
+/* 🔹 Label */
+.filtro-container label {
+	font-size: 16px;
+	font-weight: bold;
+	color: #333;
+}
+
+#filtro-pizarras {
+	min-width: 200px;
+	padding: 8px;
+	border-radius: 5px;
+	height: auto; /* Permite ajustar la altura al contenido */
+	background: white;
+	border: 2px solid #ccc;
+}
+
+#filtro-pizarras option {
+	padding: 5px;
+	cursor: pointer;
+}
+
+#filtrar-btn,
+#quitar-filtro-btn {
+	background: #007bff;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+#filtrar-btn:hover,
+#quitar-filtro-btn:hover {
+	background: #0056b3;
+}
+
+#quitar-filtro-btn {
+	background: #dc3545;
+}
+
+#quitar-filtro-btn:hover {
+	background: #a71d2a;
+}

@@ -1,39 +1,38 @@
 class Pizarra {
-	botonCrearPizarra = document.getElementById("crear-pizarra");
-	modal = document.getElementById("pizarra-modal");
-	pizarraContainer = document.querySelector(".pizarra");
-	pizarras = [];
-	editIndex = null; // Para saber si estamos editando una pizarra existente
-
 	constructor() {
+		this.botonCrearPizarra = document.getElementById("crear-pizarra");
+		this.modal = document.getElementById("pizarra-modal");
+		this.pizarraContainer = document.querySelector(".pizarra");
+		this.pizarras = [];
+		this.editIndex = null; // Para saber si estamos editando una pizarra existente
+
+		this.cargarDesdeLocalStorage(); // Cargar pizarras guardadas
 		this.agregarEventos();
+		this.mostrarPizarras(); // Mostrar las pizarras al cargar la página
 	}
 
 	agregarEventos() {
-		this.botonCrearPizarra.addEventListener("click", () => {
-			this.openModal();
-		});
+		this.botonCrearPizarra.addEventListener("click", () =>
+			this.openModal()
+		);
 
-		document.querySelector(".close").addEventListener("click", () => {
-			this.closeModal();
-		});
+		document
+			.querySelector(".close")
+			.addEventListener("click", () => this.closeModal());
 
 		document
 			.querySelector(".cancelar-btn")
-			.addEventListener("click", () => {
-				this.closeModal();
-			});
+			.addEventListener("click", () => this.closeModal());
 
-		document.querySelector(".crear-btn").addEventListener("click", () => {
-			this.createOrUpdatePizarra();
-		});
+		document
+			.querySelector(".crear-btn")
+			.addEventListener("click", () => this.createOrUpdatePizarra());
 	}
 
 	openModal(index = null) {
 		this.modal.style.display = "flex";
 		document.body.classList.add("modal-open");
 
-		// Si index es válido, estamos editando
 		if (index !== null) {
 			this.editIndex = index;
 			document.getElementById("pizarra-name").value =
@@ -42,7 +41,6 @@ class Pizarra {
 				this.pizarras[index].descripcion;
 			document.querySelector(".crear-btn").textContent = "Actualizar";
 		} else {
-			// Si no, es una nueva pizarra
 			this.editIndex = null;
 			document.getElementById("pizarra-name").value = "";
 			document.getElementById("pizarra-desc").value = "";
@@ -67,18 +65,21 @@ class Pizarra {
 			if (this.editIndex === null) {
 				// Crear nueva pizarra
 				this.pizarras.push({
+					id: Date.now(), // ID único basado en timestamp
 					nombre: pizarraName,
 					descripcion: pizarraDesc
 				});
 			} else {
 				// Editar pizarra existente
 				this.pizarras[this.editIndex] = {
+					...this.pizarras[this.editIndex],
 					nombre: pizarraName,
 					descripcion: pizarraDesc
 				};
 				this.editIndex = null;
 			}
 
+			this.guardarEnLocalStorage(); // Guardar cambios en localStorage
 			this.mostrarPizarras();
 			this.closeModal();
 		} else {
@@ -128,7 +129,19 @@ class Pizarra {
 
 	eliminarPizarra(index) {
 		this.pizarras.splice(index, 1);
+		this.guardarEnLocalStorage();
 		this.mostrarPizarras();
+	}
+
+	guardarEnLocalStorage() {
+		localStorage.setItem("pizarras", JSON.stringify(this.pizarras));
+	}
+
+	cargarDesdeLocalStorage() {
+		const pizarrasGuardadas = localStorage.getItem("pizarras");
+		if (pizarrasGuardadas) {
+			this.pizarras = JSON.parse(pizarrasGuardadas);
+		}
 	}
 }
 

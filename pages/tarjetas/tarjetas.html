@@ -7,6 +7,7 @@
     <title>Tarjetas - Mochi Jira</title>
     <link rel="icon" type="image/png" href="../../assets/icono.png">
     <link rel="stylesheet" href="../../global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="tarjetas.css">
 </head>
 
@@ -18,7 +19,61 @@
             <li class="nav-item"><a href="../tarjetas/tarjetas.html" class="active">Tarjetas</a></li>
         </ul>
     </nav>
-    <h1>Tarjetas</h1>
+    <div class="filtro-container">
+        <label for="filtro-pizarras">Filtrar por Pizarra:</label>
+        <select id="filtro-pizarras" multiple>
+            <!-- Aquí se llenarán las opciones dinámicamente con JavaScript -->
+        </select>
+        <button id="filtrar-btn">Filtrar</button>
+        <button id="quitar-filtro-btn">Quitar Filtro</button>
+
+    </div>
+
+
+
+    <!-- Botón para abrir el modal -->
+    <button class="crear-tarjeta" id="crear-tarjeta">Crear Tarjeta</button>
+
+    <!-- Contenedor donde se mostrarán las tarjetas -->
+    <div class="tarjetas-container">
+        <div class="lista-pizarras">
+            <!-- Aquí se agregarán dinámicamente las tarjetas dentro de sus pizarras -->
+        </div>
+    </div>
+
+    <!-- Modal para Crear Tarjeta -->
+    <div id="tarjeta-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <h2>Crear Nueva Tarjeta</h2>
+
+            <label for="tarjeta-titulo">Título</label>
+            <input type="text" id="tarjeta-titulo" placeholder="Título">
+
+            <label for="tarjeta-desc">Descripción</label>
+            <textarea id="tarjeta-desc" placeholder="Descripción"></textarea>
+
+            <label for="tarjeta-prioridad">Prioridad</label>
+            <select id="tarjeta-prioridad">
+                <option value="Alta">Alta</option>
+                <option value="Media">Media</option>
+                <option value="Baja">Baja</option>
+            </select>
+
+            <label for="pizarra-select">Seleccionar Pizarra</label>
+            <select id="pizarra-select">
+                <option value="" disabled selected>Seleccionar Pizarra</option>
+                <!-- Aquí se llenarán las pizarras dinámicamente -->
+            </select>
+
+            <div class="modal-buttons">
+                <button class="crear-btn">Crear</button>
+                <button class="cancelar-btn">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
     <script type="module" src="../../store/store.js"></script>
     <script type="module" src="tarjetas.js"></script>
 </body>
